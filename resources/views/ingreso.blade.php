@@ -11,34 +11,48 @@
             <th colspan="3">Crear nuevo alumno</th>
         </tr>
 
+        <!--@if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>
+                        {{$error}}
+                    </li>
+                @endforeach
+            </ul>
+        @endif-->
+
         <form action="{{route('alumnos.store')}}" method="post">
             @csrf
 
             <tr>
                 <th>Nombre: </th>
                 <td> 
-                    <input type="text" name="nombre" required>
+                    <input type="text" name="nombre" >
+                    <br>{{$errors->first('nombre')}}
                 </td>
             </tr>
 
             <tr>
                 <th>Curso: </th>
                 <td> 
-                    <input type="text" name="curso" required>
+                    <input type="text" name="curso" >
+                    <br>{{$errors->first('curso')}}
                 </td>
             </tr>
 
             <tr>
                 <th>Nota 1: </th>
                 <td> 
-                    <input type="number" id="nota1" name="nota1" min="0" max="20" required>
+                    <input type="number" id="nota1" name="nota1" min="0" max="20" >
+                    <br>{{$errors->first('nota1')}}
                 </td>
             </tr>
 
             <tr>
                 <th>Nota 2: </th>
                 <td> 
-                    <input type="number" id="nota2" name="nota2" min="0" max="20" required>
+                    <input type="number" id="nota2" name="nota2" min="0" max="20" >
+                    <br>{{$errors->first('nota2')}}
                 </td>
             </tr>
 
