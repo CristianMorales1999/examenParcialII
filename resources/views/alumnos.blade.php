@@ -4,7 +4,6 @@
 
 @section('content')
     <h2>Listado</h2>
-
     <tr>
         @if($alumnos)
             @foreach($alumnos as $alumno)
@@ -17,4 +16,10 @@
     <tr>
         <td colspan="3">{{$alumnos->links('pagination::bootstrap-4')}}</td>
     </tr>
+    <tr>
+        <td colspan="3" class="alumnos">
+            <a href="{{route('ingreso')}}">Crear Nuevo Alumno</a>
+        </td>
+    </tr>
+
 @endsection
