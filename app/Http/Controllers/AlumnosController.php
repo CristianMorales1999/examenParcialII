@@ -48,7 +48,14 @@ class AlumnosController extends Controller
             'nota2'=>$nota2
         ]);
         */
-        Alumno::create(request()->all());
+        //Alumno::create(request()->all());
+        $camposv=request()->validate([
+            'nombre'=>'required',
+            'curso'=>'required',
+            'nota1'=>'required',
+            'nota2'=>'required'
+        ]);
+        Alumno::create($camposv);
 
         return redirect()->route('alumnos.index');
     }
