@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Alumno;
-use App\Http\Requests\CreateAlumnoRquest;
+use App\Http\Requests\CreateAlumnoRequest;
 
 
 class AlumnosController extends Controller
@@ -35,22 +35,10 @@ class AlumnosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    /* //No funcionaría con este ultimo ajuste
+    public function store(CreateAlumnoRequest $request)*/
     public function store(Request $request)
     {
-        /*
-        $nombre=request('nombre');
-        $curso=request('curso');
-        $nota1=request('nota1');
-        $nota2=request('nota2');
-        
-        Alumno::create([
-            'nombre'=>$nombre,
-            'curso'=>$curso,
-            'nota1'=>$nota1,
-            'nota2'=>$nota2
-        ]);
-        */
-        //Alumno::create(request()->all());
         $camposv=request()->validate([
             'nombre'=>'required',
             'curso'=>'required',
@@ -58,7 +46,10 @@ class AlumnosController extends Controller
             'nota2'=>'required'
         ]);
         Alumno::create($camposv);
-
+        
+        /* //No funcionaría con este ultimo ajuste         
+        Alumno::create($request->validate());*/
+        
         return redirect()->route('alumnos.index');
     }
 
