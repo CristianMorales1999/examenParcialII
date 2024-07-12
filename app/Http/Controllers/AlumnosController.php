@@ -35,18 +35,20 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
         $nombre=request('nombre');
         $curso=request('curso');
         $nota1=request('nota1');
         $nota2=request('nota2');
-
+        
         Alumno::create([
             'nombre'=>$nombre,
             'curso'=>$curso,
             'nota1'=>$nota1,
             'nota2'=>$nota2
         ]);
+        */
+        Alumno::create(request()->all());
 
         return redirect()->route('alumnos.index');
     }
