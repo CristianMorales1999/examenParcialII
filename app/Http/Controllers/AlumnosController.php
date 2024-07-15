@@ -35,21 +35,17 @@ class AlumnosController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    /* //No funcionaría con este ultimo ajuste
-    public function store(CreateAlumnoRequest $request)*/
-    public function store(Request $request)
+    public function store(CreateAlumnoRequest $request)
     {
-        $camposv=request()->validate([
+        /* $camposv=request()->validate([
             'nombre'=>'required',
             'curso'=>'required',
             'nota1'=>'required',
             'nota2'=>'required'
         ]);
-        Alumno::create($camposv);
-        
-        /* //No funcionaría con este ultimo ajuste         
-        Alumno::create($request->validate());*/
-        
+        Alumno::create($camposv); */
+        Alumno::create($request->validated());
+
         return redirect()->route('alumnos.index');
     }
 
